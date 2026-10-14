@@ -1,0 +1,138 @@
+/*
+  Design tokens — Catholic Church in Eritrea
+  ------------------------------------------
+  Tokens are the named values every page reuses: colors, fonts, sizes and
+  spacing. Change a value here and it changes everywhere on the site.
+
+  Choices: dignified and traditional feel · Marian Blue and Gold colors ·
+  EB Garamond headings with Source Sans 3 reading text · Comfortable spacing ·
+  Classic components.
+
+  Fonts are loaded from Google Fonts in each page's <head>:
+  https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600&family=Source+Sans+3:wght@400;600&family=Noto+Serif+Ethiopic:wght@500;600&family=Noto+Sans+Ethiopic:wght@400;600&display=swap
+*/
+
+:root {
+  /* ---------- Colors (light mode) ---------- */
+  --color-primary: #1f3a68;          /* Marian blue: menu bar, filled buttons */
+  --color-primary-hover: #172c50;    /* Darker blue when hovering */
+  --color-primary-text: #1f3a68;     /* Blue used for links and headings */
+  --color-on-primary: #f8f7f3;       /* Text on top of blue */
+  --color-on-nav: #f3efe4;           /* Text in the blue menu bar */
+
+  --color-accent: #b38a2e;           /* Gold: lines and ornaments only, never body text */
+  --color-accent-text: #866517;      /* Darker gold that is safe for small labels */
+
+  --color-bg: #f8f7f3;               /* Page background (soft ivory) */
+  --color-surface: #ffffff;          /* Cards and panels */
+  --color-tint: #eef1f6;             /* Light blue wash for hovers and highlights */
+  --color-text: #1d2330;             /* Main text (blue-black) */
+  --color-text-soft: #4d5566;        /* Secondary text: dates, captions */
+  --color-border: #dfe2e8;           /* Thin dividing lines */
+
+  --color-success: #2f6b3f;
+  --color-warning: #8a5a00;
+  --color-danger: #a12a2a;
+
+  /* ---------- Fonts ---------- */
+  /* Ge'ez (Tigrinya) letters fall back to the Noto Ethiopic fonts automatically. */
+  --font-display: "EB Garamond", "Noto Serif Ethiopic", Georgia, "Times New Roman", serif;
+  --font-body: "Source Sans 3", "Noto Sans Ethiopic", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-bold: 600;
+
+  /* Type scale: the fixed list of text sizes */
+  --text-xs: 0.8125rem;   /* 13px  labels, small print */
+  --text-sm: 0.9375rem;   /* 15px  captions, card text */
+  --text-base: 1.125rem;  /* 18px  reading text */
+  --text-lg: 1.25rem;     /* 20px  lead paragraphs, h4 */
+  --text-xl: 1.5rem;      /* 24px  h3 */
+  --text-2xl: 2rem;       /* 32px  h2 */
+  --text-3xl: clamp(2rem, 1.4rem + 2.6vw, 2.75rem); /* 32–44px  h1, grows with the screen */
+
+  --leading-tight: 1.15;  /* headings */
+  --leading-snug: 1.35;
+  --leading-body: 1.65;   /* reading text */
+  --tracking-label: 0.12em; /* letter spacing for small uppercase labels */
+  --measure: 65ch;        /* comfortable line length for reading */
+
+  /* ---------- Spacing (Comfortable ruler) ---------- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 32px;
+  --space-6: 48px;
+  --space-7: 64px;
+
+  --gutter: var(--space-4);          /* space at the left and right edges of the page */
+  --section-gap: var(--space-7);     /* space between page sections */
+  --container: 1120px;               /* maximum page width */
+
+  /* ---------- Shape ---------- */
+  --radius-sm: 3px;                  /* Classic: gently squared corners */
+  --radius-pill: 999px;
+  --border-thin: 1px solid var(--color-border);
+  --border-accent: 3px solid var(--color-accent);
+  --shadow-sm: 0 1px 2px rgb(29 35 48 / 0.06);
+
+  /* ---------- Motion ---------- */
+  --duration-fast: 150ms;
+}
+
+/* Phones: spacing shrinks a little so nothing feels wasted */
+@media (max-width: 600px) {
+  :root {
+    --gutter: var(--space-3);
+    --section-gap: var(--space-6);
+  }
+}
+
+/* ---------- Colors (dark mode) ---------- */
+/* Used when the visitor's device is set to dark mode, unless the page forces light. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-primary: #172c50;
+    --color-primary-hover: #b9cdef;
+    --color-primary-text: #9db8e6;
+    --color-on-primary: #141820;
+    --color-on-nav: #efe7d4;
+    --color-accent: #c9a24a;
+    --color-accent-text: #d6b263;
+    --color-bg: #141820;
+    --color-surface: #1d2330;
+    --color-tint: #232b3b;
+    --color-text: #e7eaf0;
+    --color-text-soft: #a9b1c0;
+    --color-border: #2f3747;
+    --color-success: #7cc48f;
+    --color-warning: #e2b55a;
+    --color-danger: #f08f8f;
+    --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.4);
+    color-scheme: dark;
+  }
+}
+
+/* The same dark values, for a manual "dark" switch: <html data-theme="dark"> */
+:root[data-theme="dark"] {
+  --color-primary: #172c50;
+  --color-primary-hover: #b9cdef;
+  --color-primary-text: #9db8e6;
+  --color-on-primary: #141820;
+  --color-on-nav: #efe7d4;
+  --color-accent: #c9a24a;
+  --color-accent-text: #d6b263;
+  --color-bg: #141820;
+  --color-surface: #1d2330;
+  --color-tint: #232b3b;
+  --color-text: #e7eaf0;
+  --color-text-soft: #a9b1c0;
+  --color-border: #2f3747;
+  --color-success: #7cc48f;
+  --color-warning: #e2b55a;
+  --color-danger: #f08f8f;
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.4);
+  color-scheme: dark;
+}
