@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Style Guide · Catholic Church in Eritrea</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600&family=Source+Sans+3:wght@400;600&family=Noto+Serif+Ethiopic:wght@500;600&family=Noto+Sans+Ethiopic:wght@400;600&display=swap">
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="components.css">
+  <style>
+    /* Styles used only by this style guide page */
+    .sg-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr)); gap: var(--space-4); }
+    .swatch { display: grid; gap: var(--space-1); font-size: var(--text-sm); }
+    .swatch-chip { height: 72px; border-radius: var(--radius-sm); border: var(--border-thin); }
+    .swatch code, .sg-code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: var(--text-xs); color: var(--color-text-soft); }
+    .type-row { display: grid; grid-template-columns: minmax(0, 140px) minmax(0, 1fr); gap: var(--space-3); align-items: baseline; padding-block: var(--space-3); border-top: var(--border-thin); }
+    .type-row > :last-child { margin: 0; }
+    .space-row { display: flex; align-items: center; gap: var(--space-3); font-size: var(--text-sm); }
+    .space-bar { height: 16px; background: var(--color-accent); border-radius: 1px; }
+    .space-row code { width: 150px; flex: none; white-space: nowrap; }
+    .sg-stack { display: grid; gap: var(--space-2); }
+    .sg-panel { padding: var(--space-5); background: var(--color-surface); border: var(--border-thin); border-radius: var(--radius-sm); }
+    @media (max-width: 500px) { .type-row { grid-template-columns: 1fr; gap: var(--space-1); } }
+  </style>
+</head>
+<body>
+
+  <!-- Site navigation: copy this block onto every page -->
+  <header class="site-nav" data-open="false">
+    <div class="container site-nav-inner">
+      <a class="site-brand" href="#">
+        <!-- Placeholder cross: replace with the official emblem -->
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 2h4v4h4v4h-4v12h-4V10H6V6h4z"/></svg>
+        Catholic Church in Eritrea
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-menu">Menu</button>
+      <nav aria-label="Main">
+        <ul class="site-menu" id="site-menu">
+          <li><a href="#" aria-current="page">Bishops' Conference</a></li>
+          <li><a href="#">Eparchies</a></li>
+          <li><a href="#">History</a></li>
+          <li><a href="#">Liturgy</a></li>
+          <li><a href="#">Communications</a></li>
+          <li><a href="#">Offices</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <span class="eyebrow">Design system</span>
+        <h1>Style Guide</h1>
+        <p class="lead">The colors, fonts, spacing and building blocks for the official website of the Catholic Church in Eritrea. Every page of the site should be built from these pieces.</p>
+      </div>
+    </section>
+
+    <!-- Colors -->
+    <section class="section" style="padding-top: 0">
+      <div class="container">
+        <h2>Colors</h2>
+        <p class="muted">Marian Blue and Gold. Gold is for lines and ornaments only; use the darker gold for small labels. Every color has a dark-mode version.</p>
+        <div class="sg-grid">
+          <div class="swatch"><div class="swatch-chip" style="background: var(--color-primary)"></div><strong>Primary</strong><code>--color-primary</code></div>
+          <div class="swatch"><div class="swatch-chip" style="background: var(--color-primary-text)"></div><strong>Primary text and links</strong><code>--color-primary-text</code></div>
+          <div class="swatch"><div class="swatch-chip" style="background: var(--color-accent)"></div><strong>Gold accent</strong><code>--color-accent</code></div>
+          <div class="swatch"><div class="swatch-chip" style="background: var(--color-accent-text)"></div><strong>Gold label</strong><code>--color-accent-text</code></div>
+          <div class="swatch"><div class="swatch-chip" style="background: var(--color-bg)"></div><strong>Background</strong><code>--color-bg</code></div>
+          <div class="swatch"><div class="swatch-chip" style="background: var(--color-surface)"></div><strong>Surface (cards)</strong><code>--color-surface</code></div>
+          <div class="swatch"><div class="swatch-chip" style="background: var(--color-text)"></div><strong>Text</strong><code>--color-text</code></div>
+          <div class="swatch"><div class="swatch-chip" style="background: var(--color-text-soft)"></div><strong>Soft text</strong><code>--color-text-soft</code></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Typography -->
+    <section class="section" style="padding-top: 0">
+      <div class="container">
+        <h2>Typography</h2>
+        <p class="muted">Headings use EB Garamond. Reading text uses Source Sans 3. Tigrinya (Ge'ez script) uses Noto Serif Ethiopic and Noto Sans Ethiopic automatically.</p>
+        <div class="type-row"><code class="sg-code">h1 · 32–44px</code><h1>Eritrean Catholic Bishops' Conference</h1></div>
+        <div class="type-row"><code class="sg-code">h2 · 32px</code><h2>History and Identity</h2></div>
+        <div class="type-row"><code class="sg-code">h3 · 24px</code><h3>The Metropolitan Archeparchy of Asmara</h3></div>
+        <div class="type-row"><code class="sg-code">h4 · 20px</code><h4>Office for Catechesis</h4></div>
+        <div class="type-row"><code class="sg-code">Lead · 20px</code><p class="lead">The Church in Eritrea celebrates the Divine Liturgy in the Alexandrian Ge'ez rite, in full communion with the Bishop of Rome.</p></div>
+        <div class="type-row"><code class="sg-code">Body · 18px</code><p>The Bishops of the Metropolitan Archeparchy of Asmara and the Eparchies of Keren, Barentu and Segheneity greet the faithful and share this message for the new pastoral year.</p></div>
+        <div class="type-row"><code class="sg-code">Label · 13px</code><span class="eyebrow">Pastoral Letter</span></div>
+        <div class="type-row"><code class="sg-code">Ge'ez</code><div class="sg-stack" lang="ti"><h3 style="margin:0">ጉባኤ ጳጳሳት ካቶሊክ ኤርትራ</h3><p style="margin:0">ካቶሊካዊት ቤተ ክርስቲያን ኤርትራ</p></div></div>
+      </div>
+    </section>
+
+    <!-- Spacing -->
+    <section class="section" style="padding-top: 0">
+      <div class="container">
+        <h2>Spacing</h2>
+        <p class="muted">The Comfortable ruler. Always use one of these sizes for gaps and padding. On phones, page edges and section gaps shrink automatically.</p>
+        <div class="sg-stack">
+          <div class="space-row"><code class="sg-code">--space-1 · 4px</code><span class="space-bar" style="width: var(--space-1)"></span></div>
+          <div class="space-row"><code class="sg-code">--space-2 · 8px</code><span class="space-bar" style="width: var(--space-2)"></span></div>
+          <div class="space-row"><code class="sg-code">--space-3 · 16px</code><span class="space-bar" style="width: var(--space-3)"></span></div>
+          <div class="space-row"><code class="sg-code">--space-4 · 24px</code><span class="space-bar" style="width: var(--space-4)"></span></div>
+          <div class="space-row"><code class="sg-code">--space-5 · 32px</code><span class="space-bar" style="width: var(--space-5)"></span></div>
+          <div class="space-row"><code class="sg-code">--space-6 · 48px</code><span class="space-bar" style="width: var(--space-6)"></span></div>
+          <div class="space-row"><code class="sg-code">--space-7 · 64px</code><span class="space-bar" style="width: var(--space-7)"></span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Buttons -->
+    <section class="section" style="padding-top: 0">
+      <div class="container">
+        <h2>Buttons</h2>
+        <p class="muted">Use one main button per section. The outlined button is for a second choice, and the text button for quiet actions.</p>
+        <div class="sg-panel btn-group">
+          <a class="btn btn-primary" href="#">Read the letter</a>
+          <a class="btn btn-secondary" href="#">All communications</a>
+          <a class="btn btn-text" href="#">Contact the Secretariat</a>
+          <button class="btn btn-primary" type="button" disabled>Disabled</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cards -->
+    <section class="section" style="padding-top: 0">
+      <div class="container">
+        <h2>Cards</h2>
+        <p class="muted">For news, bishops, eparchies and cathedrals. Cards in a row wrap to one column on phones.</p>
+        <div class="card-grid">
+          <article class="card">
+            <span class="eyebrow">Pastoral Letter</span>
+            <h3 class="card-title"><a href="#">Message of the Bishops for the New Year</a></h3>
+            <span class="card-meta">12 September 2026</span>
+          </article>
+          <article class="card">
+            <span class="eyebrow">Eparchy</span>
+            <h3 class="card-title"><a href="#">Eparchy of Keren</a></h3>
+            <p class="card-text">Suffragan of the Metropolitan Archeparchy of Asmara.</p>
+          </article>
+          <article class="card">
+            <span class="eyebrow">Liturgy</span>
+            <h3 class="card-title"><a href="#">The Ge'ez Rite</a></h3>
+            <p class="card-text">The liturgical tradition of our Church.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation -->
+    <section class="section" style="padding-top: 0">
+      <div class="container">
+        <h2>Navigation</h2>
+        <p>The blue menu bar at the top of this page is the site navigation. Make the window narrow (or open this page on a phone) and the links fold into a <strong>Menu</strong> button.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Eritrean Catholic Bishops' Conference · Asmara, Eritrea</p>
+    </div>
+  </footer>
+
+  <script>
+    // Opens and closes the menu on phones
+    document.querySelectorAll('.site-nav').forEach(function (nav) {
+      var button = nav.querySelector('.menu-toggle');
+      if (!button) return;
+      button.addEventListener('click', function () {
+        var open = nav.getAttribute('data-open') === 'true';
+        nav.setAttribute('data-open', String(!open));
+        button.setAttribute('aria-expanded', String(!open));
+        button.textContent = open ? 'Menu' : 'Close';
+      });
+    });
+  </script>
+</body>
+</html>

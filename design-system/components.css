@@ -1,0 +1,180 @@
+/*
+  Components — the reusable building blocks (Classic style).
+  Load after tokens.css and base.css.
+*/
+
+/* =========================================================
+   Buttons
+   <a class="btn btn-primary">   main action (filled blue)
+   <a class="btn btn-secondary"> second action (outlined)
+   <a class="btn btn-text">      quiet action (underlined text)
+   ========================================================= */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 44px;                       /* easy to tap on phones */
+  padding: 12px 22px;
+  border: 1.5px solid var(--color-primary-text);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: var(--weight-bold);
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--duration-fast), color var(--duration-fast), border-color var(--duration-fast);
+}
+.btn-primary { background: var(--color-primary-text); color: var(--color-on-primary); }
+.btn-primary:hover { background: var(--color-primary-hover); border-color: var(--color-primary-hover); color: var(--color-on-primary); }
+
+.btn-secondary { background: transparent; color: var(--color-primary-text); }
+.btn-secondary:hover { background: var(--color-tint); }
+
+.btn-text {
+  min-height: 0;
+  padding: 4px;
+  border-color: transparent;
+  background: transparent;
+  color: var(--color-primary-text);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.btn-text:hover { text-decoration-color: var(--color-accent); }
+
+.btn[disabled], .btn[aria-disabled="true"] { opacity: 0.5; cursor: not-allowed; }
+
+.btn-group { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; }
+
+/* =========================================================
+   Cards
+   <article class="card"> … </article>
+   Use for news posts, bishops, eparchies, cathedrals.
+   ========================================================= */
+.card {
+  display: grid;
+  align-content: start;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  background: var(--color-surface);
+  border: var(--border-thin);
+  border-top: var(--border-accent);       /* the gold top line */
+  border-radius: var(--radius-sm);
+}
+.card > * { margin: 0; }
+.card-title {
+  font-family: var(--font-display);
+  font-size: 1.3125rem;
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-snug);
+  color: var(--color-text);
+}
+.card-title a { color: inherit; text-decoration: none; }
+.card-title a:hover { color: var(--color-primary-text); text-decoration: underline; }
+.card-text { font-size: var(--text-sm); color: var(--color-text-soft); }
+.card-meta { font-size: var(--text-xs); color: var(--color-text-soft); font-variant-numeric: tabular-nums; }
+.card-image { margin: calc(var(--space-4) * -1) calc(var(--space-4) * -1) var(--space-2); aspect-ratio: 3 / 2; object-fit: cover; width: calc(100% + var(--space-4) * 2); max-width: none; }
+
+/* A row of cards that wraps to one column on phones */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+  gap: var(--space-4);
+}
+
+/* =========================================================
+   Site navigation (the menu bar at the top)
+   See styleguide.html for the full HTML and the small
+   script that opens the menu on phones.
+   ========================================================= */
+.site-nav {
+  background: var(--color-primary);
+  color: var(--color-on-nav);
+  border-bottom: var(--border-accent);
+}
+.site-nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  min-height: 64px;
+  padding-block: var(--space-2);
+}
+.site-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  color: inherit;
+  text-decoration: none;
+}
+.site-brand:hover { text-decoration: none; }
+.site-brand img, .site-brand svg { width: 32px; height: 32px; flex: none; }
+
+.site-menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1) var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.site-menu a {
+  display: block;
+  padding-block: var(--space-2);
+  color: inherit;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  text-decoration: none;
+}
+.site-menu a:hover,
+.site-menu a[aria-current="page"] {
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+}
+
+/* The "Menu" button only appears on phones */
+.menu-toggle {
+  display: none;
+  min-height: 44px;
+  padding: 8px 14px;
+  border: 1.5px solid currentColor;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: inherit;
+  font: var(--weight-bold) var(--text-sm) var(--font-body);
+  cursor: pointer;
+}
+
+@media (max-width: 800px) {
+  .site-nav-inner { flex-wrap: wrap; }
+  .site-nav-inner > nav { width: 100%; }
+  .menu-toggle { display: inline-flex; align-items: center; }
+  .site-menu {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    gap: 0;
+    padding-bottom: var(--space-2);
+  }
+  .site-menu a { padding-block: 12px; border-top: 1px solid rgb(255 255 255 / 0.15); }
+  .site-nav[data-open="true"] .site-menu { display: flex; }
+}
+
+/* =========================================================
+   Footer
+   ========================================================= */
+.site-footer {
+  margin-top: var(--section-gap);
+  padding-block: var(--space-6);
+  background: var(--color-surface);
+  border-top: var(--border-accent);
+  font-size: var(--text-sm);
+  color: var(--color-text-soft);
+}
